@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:11:49 by asaux             #+#    #+#             */
-/*   Updated: 2023/12/23 14:30:41 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/06 11:56:30 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_stack	*ft_lstnew(int content)
 	list = malloc(sizeof (t_stack));
 	if (!list)
 		return (NULL);
-	list->i = content;
+	list->nb = content;
 	list->nx = 0;
 	return (list);
 }

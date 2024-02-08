@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:52:29 by asaux             #+#    #+#             */
-/*   Updated: 2023/12/18 17:19:07 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/06 11:16:03 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	swap(t_stack *stack, char c)
 	temp = 0;
 	if (!stack || !stack->nx)
 		return;
-	temp = stack->i;
-	stack->i = stack->nx->i;
-	stack->nx->i = temp;
+	temp = stack->nb;
+	stack->nb = stack->nx->nb;
+	stack->nx->nb = temp;
 	if (c == 'a')
 		write(1, "sa\n", 3);
 	if (c == 'b')

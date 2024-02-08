@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:52:54 by asaux             #+#    #+#             */
-/*   Updated: 2023/12/18 19:52:49 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/08 15:55:59 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,16 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+//# include <stdbool.h>
 
 typedef struct s_stack
 {
-	int	i;
+	int				index;
+	int				push_cost;
+	int				cheapest;
+	int 			above_median;
+	int				nb;
+	struct s_stack	*target_node;
 	struct s_stack	*nx;
 }	t_stack;
 
@@ -59,4 +65,13 @@ int			count_words(char *s, char c);
 char		*ft_strldup(const char *s1, int l);
 int			count_char(char *s, char c);
 char		**ft_split(char const *s, char c);
+
+
+int			init(t_stack **stack_a, t_stack **stack_b);
+void 		set_index(t_stack **stack, t_stack **temp);
+void		cheapest(t_stack **stack_a);
+void		push_cost(t_stack *a, t_stack **b);
+void		set_target(t_stack *stack_a, t_stack **stack_b);
+t_stack		*min_value(t_stack *stack_b);
+t_stack		*max_value(t_stack **stack_b);
 #endif

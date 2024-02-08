@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:15:33 by asaux             #+#    #+#             */
-/*   Updated: 2023/12/23 14:58:16 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/06 11:55:52 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int	find_small_number(t_stack *stack)
 {
 	int small_number;
 
-	small_number = stack->i;
+	small_number = stack->nb;
 	stack = stack->nx;
 	while (stack)
 	{
-		if (small_number > stack->i)
-			small_number = stack->i;
+		if (small_number > stack->nb)
+			small_number = stack->nb;
 		stack = stack->nx;
 	}
 	return (small_number);
@@ -59,14 +59,14 @@ int	find_second_small_number(t_stack *stack)
 	int small_second;
 
 	small_number = find_small_number(stack);
-	if (small_number != stack->i)
-		small_second = stack->i;
+	if (small_number != stack->nb)
+		small_second = stack->nb;
 	else
-		small_second = stack->nx->i;
+		small_second = stack->nx->nb;
 	while (stack)
 	{
-		if (small_second > stack->i && stack->i != small_number)
-			small_second = stack->i;
+		if (small_second > stack->nb && stack->nb != small_number)
+			small_second = stack->nb;
 		stack = stack->nx;
 	}
 	return (small_second);
