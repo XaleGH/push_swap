@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:52:54 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/08 15:55:59 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/17 04:37:49 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,26 @@ char		*ft_strldup(const char *s1, int l);
 int			count_char(char *s, char c);
 char		**ft_split(char const *s, char c);
 
-
+//init.c
 int			init(t_stack **stack_a, t_stack **stack_b);
-void 		set_index(t_stack **stack, t_stack **temp);
-void		cheapest(t_stack **stack_a);
-void		push_cost(t_stack *a, t_stack **b);
-void		set_target(t_stack *stack_a, t_stack **stack_b);
+void 		set_index(t_stack *stack);
+void		cheapest(t_stack *stack_a);
+void		push_cost(t_stack *a, t_stack *b, t_stack *temp);
+void		set_target_a_to_b(t_stack *stack_a, t_stack *stack_b);
 t_stack		*min_value(t_stack *stack_b);
-t_stack		*max_value(t_stack **stack_b);
+t_stack		*max_value(t_stack *stack_b);
+
+//move_a_to_b.c
+void		move_a_to_b(t_stack **stack_a, t_stack **stack_b);
+void		pre_push(t_stack **stack, t_stack *cheapest, char c);
+void		rr_both(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest);
+void		rrr_both(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest);
+t_stack		*get_cheapest(t_stack *stack);
+void		sort_list(t_stack **stack_a, t_stack **stack_b);
+
+//move_b_to_a.c
+void	set_b_to_a(t_stack *stack_a, t_stack *stack_b);
+void	set_target_b_to_a(t_stack *stack_a, t_stack *stack_b);
+void	push_b_to_a(t_stack **stack_a, t_stack **stack_b);
+void	put_min_on_top(t_stack **stack_a);
 #endif

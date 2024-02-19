@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:16:11 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/08 15:52:12 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/16 15:57:39 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,8 +138,6 @@ int	main(int argc, char *argv[])
 		printf("above_median : %d\n", stack_a->above_median);
 		printf("index : %d\n", stack_a->index);
 		printf("\n");
-		//printf("target_node_nb : %d\n", stack_a->target_node->nb);
-		//printf("target_node_index : %d\n", stack_a->target_node->index);
 		stack_a = stack_a->nx;
 	}
 	stack_a = temp;
@@ -150,13 +148,9 @@ int	main(int argc, char *argv[])
 		five_in_stack(&stack_a, &stack_b);
 	else if (ft_lstsize(stack_a) > 5)
 	{
-		push(&stack_a, &stack_b, 'a');
-		push(&stack_a, &stack_b, 'a');
-		printf("nb : %d\n", stack_b->nb);
-		printf("nb : %d\n", stack_b->nx->nb);
-		init(&stack_a, &stack_b);
+		sort_list(&stack_a, &stack_b);
 	}
-	stack_a = temp;
+	
 	while(stack_a != NULL)
 	{
 		printf("nb : %d\n", stack_a->nb);
@@ -168,6 +162,18 @@ int	main(int argc, char *argv[])
 		printf("target_node_index : %d\n", stack_a->target_node->index);
 		printf("\n");
 		stack_a = stack_a->nx;
+	}
+	while(stack_b != NULL)
+	{
+		printf("nb_b : %d\n", stack_b->nb);
+		printf("push_cost_b : %d\n", stack_b->push_cost);
+		printf("cheapest_b : %d\n", stack_b->cheapest);
+		printf("above_median_b : %d\n", stack_b->above_median);
+		printf("index_b : %d\n", stack_b->index);
+		printf("target_node_nb_b : %d\n", stack_b->target_node->nb);
+		printf("target_node_index_b : %d\n", stack_b->target_node->index);
+		printf("\n");
+		stack_b = stack_b->nx;
 	}
 	return (0);
 }
