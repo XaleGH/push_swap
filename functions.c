@@ -6,35 +6,36 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:15:33 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/06 11:55:52 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:07:12 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *nptr)
+int	ft_atoi(char *nptr, t_stack **stack)
 {
 	int			i;
 	int			sign;
 	long int	res;
 
-	i = 0;
+	i = -1;
 	sign = 1;
 	res = 3000000000;
-	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
+	while (nptr[i++] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		;
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		if (nptr[i] == '-')
+		if (nptr[i++] == '-')
 			sign = sign * -1;
-		i++;
 	}
 	if (nptr[i] >= '0' && nptr[i] <= '9')
 		res = 0;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 		res = res * 10 + nptr[i++] - '0';
+	if (nptr[i] != '\0')
+			return (free_stack(*stack), write(2, "Error Digit\n", 12), exit(1), 0);
 	if ((res * sign) < -2147483648 || (res * sign) > 2147483647)
-		return (write(2, "Error Value\n", 12), exit(1), 0);
+		return (free_stack(*stack), write(2, "Error Value\n", 12), exit(1), 0);
 	return (res * sign);
 }
 

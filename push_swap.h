@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:52:54 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/17 04:37:49 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:09:10 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		ft_lstdelone(t_stack *lst);
 void		ft_lstclear(t_stack **lst);
 
 //functions.c
-int			ft_atoi(char *nptr);
+int			ft_atoi(char *nptr, t_stack **stack);
 int			find_small_number(t_stack *stack);
 int			find_second_small_number(t_stack *stack);
 
@@ -88,4 +88,7 @@ void	set_b_to_a(t_stack *stack_a, t_stack *stack_b);
 void	set_target_b_to_a(t_stack *stack_a, t_stack *stack_b);
 void	push_b_to_a(t_stack **stack_a, t_stack **stack_b);
 void	put_min_on_top(t_stack **stack_a);
+
+//free.c
+void	free_stack(t_stack *stack_a);
 #endif

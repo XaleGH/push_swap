@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:55:23 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/16 14:49:24 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/19 16:22:45 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	init(t_stack **stack_a, t_stack **stack_b)
 	temp = *stack_a;
 	set_index(*stack_a);
 	set_index(*stack_b);
+	set_target_a_to_b(*stack_a, *stack_b);
 	while (++i < ft_lstsize(temp))
 	{
-		set_target_a_to_b(*stack_a, *stack_b);
 		push_cost(*stack_a, *stack_b, temp);
 		*stack_a = (*stack_a)->nx;
 	}
@@ -102,29 +102,28 @@ void	push_cost(t_stack *a, t_stack *b, t_stack *temp)
 
 void	set_target_a_to_b(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack *min_val;
-	t_stack *max_val;
+	t_stack	*closest_nb;
+	t_stack	*target_node;
+	t_stack	*temp_b;
 
-	min_val = min_value(stack_b);
-	max_val = max_value(stack_b);
-	if (stack_a->nb < min_val->nb || stack_a->nb > max_val->nb)
-		stack_a->target_node = max_val;
-	else
+	while (stack_a)
 	{
-		while (stack_b)
+		temp_b = stack_b;
+		closest_nb = min_value(stack_b);
+		while (temp_b)
 		{
-			if (stack_a->nb < stack_b->nb && stack_a->nb > stack_b->nx->nb)
+			if (temp_b->nb < stack_a->nb && temp_b->nb >= closest_nb->nb)
 			{
-				stack_a->target_node = stack_b->nx;
-				break;
+				closest_nb = temp_b;
+				target_node = temp_b;
 			}
-			if (stack_b->nb < stack_b->nx->nb)
-			{
-				stack_a->target_node = stack_b;
-				break;
-			}
-			stack_b = stack_b->nx;
+			temp_b = temp_b->nx;
 		}
+		if (closest_nb->nb > stack_a->nb)
+			stack_a->target_node = max_value(stack_b);
+		else
+			stack_a->target_node = target_node;
+		stack_a = stack_a->nx;
 	}
 }
 

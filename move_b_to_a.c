@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:11:09 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/19 10:43:20 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/19 16:42:55 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,40 +22,35 @@ void	set_b_to_a(t_stack *stack_a, t_stack *stack_b)
 
 void	set_target_b_to_a(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack *min_val;
-	t_stack *max_val;
+	t_stack	*closest_nb;
+	t_stack	*target_node;
+	t_stack	*temp_a;
 
-	min_val = min_value(stack_a);
-	max_val = max_value(stack_a);
 	while (stack_b)
 	{
-		if (stack_b->nb < min_val->nb || stack_b->nb > max_val->nb)
-			stack_b->target_node = min_val;
-		else
+		temp_a = stack_a;
+		closest_nb = max_value(stack_a);
+		while (temp_a)
 		{
-			while (stack_a)
+			if (temp_a->nb > stack_b->nb && temp_a->nb <= closest_nb->nb)
 			{
-				if (stack_b->nb > stack_a->nb && stack_b->nb < stack_a->nx->nb)
-				{
-					stack_b->target_node = stack_a->nx;
-					break;
-				}
-				if (stack_a->nb > stack_a->nx->nb)
-				{
-					stack_b->target_node = stack_a;
-					break;
-				}
-				stack_a = stack_a->nx;
+				closest_nb = temp_a;
+				target_node = temp_a;
 			}
+			temp_a = temp_a->nx;
 		}
+		if (closest_nb->nb < stack_b->nb)
+			stack_b->target_node = min_value(stack_a);
+		else
+			stack_b->target_node = target_node;
 		stack_b = stack_b->nx;
 	}
 }
 
 void	push_b_to_a(t_stack **stack_a, t_stack **stack_b)
 {
-	pre_push(stack_a, (*stack_b)->target_node, 'b');
-	push(stack_b, stack_a, 'b');
+	pre_push(stack_a, (*stack_b)->target_node, 'a');
+	push(stack_b, stack_a, 'a');
 }
 
 void	put_min_on_top(t_stack **stack_a)

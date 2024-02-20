@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:16:11 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/16 15:57:39 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:42:36 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ t_stack *fill_stack_a_wsplit(char *str)
 	array = ft_split(str, ' ');
 	while (array[i])
 	{
-		ft_lstadd_back(&stack, ft_lstnew(ft_atoi(array[i])));
+		ft_lstadd_back(&stack, ft_lstnew(ft_atoi(array[i], &stack)));
 		i++;
 	}
+	free_array(array);
 	return (stack);
 }
 
@@ -103,6 +104,8 @@ void	five_in_stack(t_stack **stack_a, t_stack **stack_b)
 	{
 		if ((*stack_a)->nb == small_number || (*stack_a)->nb == small_second)
 			push(stack_a, stack_b, 'b');
+		if ((*stack_a)->nb == small_number || (*stack_a)->nb == small_second)
+			push(stack_a, stack_b, 'b');
 		rotate(stack_a, 'a');
 	}
 	three_in_stack(stack_a);
@@ -129,7 +132,7 @@ int	main(int argc, char *argv[])
 	if (!check_double(stack_a))
 		return (write(2, "Error Double\n", 13), 0);
 	
-	temp = stack_a;
+	/* temp = stack_a;
 	while(stack_a != NULL)
 	{
 		printf("nb : %d\n", stack_a->nb);
@@ -140,18 +143,15 @@ int	main(int argc, char *argv[])
 		printf("\n");
 		stack_a = stack_a->nx;
 	}
-	stack_a = temp;
-	printf("%d\n", ft_lstsize(stack_a));
+	stack_a = temp; */
 	if (ft_lstsize(stack_a) == 2 || ft_lstsize(stack_a) == 3)
 		three_in_stack(&stack_a);
 	else if (ft_lstsize(stack_a) == 4 || ft_lstsize(stack_a) == 5)
 		five_in_stack(&stack_a, &stack_b);
 	else if (ft_lstsize(stack_a) > 5)
-	{
 		sort_list(&stack_a, &stack_b);
-	}
-	
-	while(stack_a != NULL)
+	free_stack(stack_a);
+	/* while(stack_a != NULL)
 	{
 		printf("nb : %d\n", stack_a->nb);
 		printf("push_cost : %d\n", stack_a->push_cost);
@@ -174,6 +174,6 @@ int	main(int argc, char *argv[])
 		printf("target_node_index_b : %d\n", stack_b->target_node->index);
 		printf("\n");
 		stack_b = stack_b->nx;
-	}
+	} */
 	return (0);
 }
