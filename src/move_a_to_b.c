@@ -6,11 +6,11 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:56:49 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 14:06:06 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:49:32 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 //function that pushes the node with the lowest push_cost from stack a to b
 void	move_a_to_b(t_stack **stack_a, t_stack **stack_b)

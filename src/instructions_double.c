@@ -6,11 +6,11 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:41:35 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 12:29:50 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:49:25 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 //sa and sb at the same time. ss
 void	ss(t_stack *stack_a, t_stack *stack_b, char c)

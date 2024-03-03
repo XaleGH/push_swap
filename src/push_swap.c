@@ -6,11 +6,11 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:16:11 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 14:12:17 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:49:41 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 //Fill stack a when argc > 2.
 t_stack *fill_stack_a(int argc, char *argv[])

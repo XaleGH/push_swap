@@ -6,11 +6,11 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:09:07 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/28 12:53:34 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:49:08 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 //free the stack
 void	free_stack(t_stack *stack_a)

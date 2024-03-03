@@ -6,11 +6,11 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:11:49 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/28 12:53:07 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:48:59 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 //add node at the start of the list
 void	ft_lstadd_front(t_stack **lst, t_stack *new)

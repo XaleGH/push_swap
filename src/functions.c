@@ -6,11 +6,11 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:15:33 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/28 12:59:44 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:49:18 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 //convert one char* on a int
 int	ft_atoi(char *nptr, t_stack **stack)

@@ -6,11 +6,11 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:41:16 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 14:23:29 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:49:45 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 //sorts stack_a in ascending order
 void	sort_list(t_stack **stack_a, t_stack **stack_b)

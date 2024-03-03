@@ -6,11 +6,11 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:11:09 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 14:11:40 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:49:37 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 //set the indexes and assign a target in stack a for each nodes in b
 void	set_b_to_a(t_stack *stack_a, t_stack *stack_b)

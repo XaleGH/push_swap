@@ -6,11 +6,11 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:57:12 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/28 12:57:17 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:49:14 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 //count the numbers of world in the array
 int	count_words(char *s, char c)

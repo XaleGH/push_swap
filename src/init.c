@@ -6,11 +6,11 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:55:23 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 12:28:54 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:49:21 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 //initiate attribut of stacks
 int	init(t_stack **stack_a, t_stack **stack_b)
