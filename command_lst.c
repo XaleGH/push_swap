@@ -6,12 +6,13 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:11:49 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/06 11:56:30 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/28 12:53:07 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//add node at the start of the list
 void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
 	if (!lst)
@@ -20,6 +21,7 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new)
 	(*lst) = new;
 }
 
+//add node at the end of the list
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*l;
@@ -36,7 +38,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 		l = l->nx;
 	l->nx = new;
 }
-
+//return the last node of the list
 t_stack	*ft_lstlast(t_stack *lst)
 {
 	if (!lst)
@@ -46,6 +48,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (lst);
 }
 
+//create a new node
 t_stack	*ft_lstnew(int content)
 {
 	t_stack	*list;
@@ -58,6 +61,7 @@ t_stack	*ft_lstnew(int content)
 	return (list);
 }
 
+//calculate the number of nodes in the list
 int	ft_lstsize(t_stack *lst)
 {
 	int	i;
@@ -69,25 +73,4 @@ int	ft_lstsize(t_stack *lst)
 		i++;
 	}
 	return (i);
-}
-
-void	ft_lstdelone(t_stack *lst)
-{
-	if (!lst)
-		return ;
-	free(lst);
-}
-
-void	ft_lstclear(t_stack **lst)
-{
-	t_stack	*l;
-
-	if (!*lst)
-		return ;
-	while (*lst)
-	{
-		l = (*lst)->nx;
-		ft_lstdelone(*lst);
-		(*lst) = l;
-	}
 }

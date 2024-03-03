@@ -6,12 +6,13 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:57:12 by asaux             #+#    #+#             */
-/*   Updated: 2023/12/15 15:25:33 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/28 12:57:17 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//count the numbers of world in the array
 int	count_words(char *s, char c)
 {
 	int	i;
@@ -31,6 +32,7 @@ int	count_words(char *s, char c)
 	return (j);
 }
 
+//duplicate the numbers of character (l) in the new array
 char	*ft_strldup(const char *s1, int l)
 {
 	char	*str;
@@ -49,6 +51,7 @@ char	*ft_strldup(const char *s1, int l)
 	return (str);
 }
 
+//calculate the numbers of characters in the word
 int	count_char(char *s, char c)
 {
 	int	i;
@@ -66,6 +69,7 @@ int	count_char(char *s, char c)
 	return (j);
 }
 
+//split one answer in a double array with one word by entry
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
@@ -94,20 +98,3 @@ char	**ft_split(char const *s, char c)
 	tab[k] = NULL;
 	return (tab);
 }
-/*int	main(void)
-{
-	int	i;
-
-	i = 0;
-	char **recup;
-	char *s = "    Hello ici on   coupe cette  phrase    ";
-	recup = ft_split(s, ' ');
-	while (recup[i])
-	{
-		printf("%s\n", recup[i]);
-		free(recup[i]);
-		i++;
-	}
-	free(recup);
-	return(0);
-}*/

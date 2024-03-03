@@ -6,12 +6,13 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:55:23 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/19 16:22:45 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 12:28:54 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//initiate attribut of stacks
 int	init(t_stack **stack_a, t_stack **stack_b)
 {
 	int i;
@@ -31,6 +32,8 @@ int	init(t_stack **stack_a, t_stack **stack_b)
 	cheapest(*stack_a);
 	return (0);
 }
+
+//set index for each node in stack
 void 	set_index(t_stack *stack)
 {
 	int	i;
@@ -51,6 +54,7 @@ void 	set_index(t_stack *stack)
 	}
 }
 
+//set at 1 the attribut cheapest of the first node with the smallest push_cost
 void	cheapest(t_stack *stack_a)
 {
 	int cheapest;
@@ -75,6 +79,8 @@ void	cheapest(t_stack *stack_a)
 		stack_a = stack_a->nx;
 	}
 }
+
+//calculates the number of moves required to put the nodes in the right place
 void	push_cost(t_stack *a, t_stack *b, t_stack *temp)
 {
 	int len_a;
@@ -100,6 +106,7 @@ void	push_cost(t_stack *a, t_stack *b, t_stack *temp)
 		a->push_cost = (len_a - a->index) + a->target_node->index;
 }
 
+//assigns a target to each nodes in the stack_a
 void	set_target_a_to_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack	*closest_nb;
@@ -125,32 +132,4 @@ void	set_target_a_to_b(t_stack *stack_a, t_stack *stack_b)
 			stack_a->target_node = target_node;
 		stack_a = stack_a->nx;
 	}
-}
-
-t_stack	*min_value(t_stack *stack_b)
-{
-	t_stack *min_val;
-
-	min_val = stack_b;
-	while (stack_b->nx)
-	{
-		if (min_val->nb > stack_b->nx->nb)
-			min_val = stack_b->nx;
-		stack_b = (stack_b)->nx;
-	}
-	return (min_val);
-}
-
-t_stack	*max_value(t_stack *stack_b)
-{
-	t_stack	*max_val;
-
-	max_val = stack_b;
-	while (stack_b->nx)
-	{
-		if (max_val->nb < stack_b->nx->nb)
-			max_val = stack_b->nx;
-		stack_b = stack_b->nx;
-	}
-	return (max_val);
 }

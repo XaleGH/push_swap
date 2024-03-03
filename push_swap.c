@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:16:11 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/20 16:42:36 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:12:17 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_stack *fill_stack_a(int argc, char *argv[])
 	stack = NULL;
 	while (i < argc)
 	{
-		ft_lstadd_back(&stack, ft_lstnew(ft_atoi(argv[i])));
+		ft_lstadd_back(&stack, ft_lstnew(ft_atoi(argv[i], &stack)));
 		i++;
 	}
 	return (stack);
@@ -39,32 +39,13 @@ t_stack *fill_stack_a_wsplit(char *str)
 	array = ft_split(str, ' ');
 	while (array[i])
 	{
-		ft_lstadd_back(&stack, ft_lstnew(ft_atoi(array[i], &stack)));
+		ft_lstadd_back(&stack, ft_lstnew(ft_atoi_wsplit(array[i], &stack, array)));
 		i++;
 	}
 	free_array(array);
 	return (stack);
 }
 
-//Check double in stack_a.
-int	check_double(t_stack *stack_a)
-{
-	t_stack *temp;
-
-	temp = stack_a->nx;
-	while (stack_a->nx != NULL)
-	{
-		while (temp != NULL)
-		{
-			if (stack_a->nb == temp->nb)
-				return (0);
-			temp = temp->nx;
-		}
-		stack_a = stack_a->nx;
-		temp = stack_a->nx;
-	}
-	return (1);
-}
 //Sort stack_a when only 2 or 3 values.
 void	three_in_stack(t_stack **stack)
 {
@@ -120,30 +101,19 @@ int	main(int argc, char *argv[])
 {
 	t_stack *stack_a;
 	t_stack *stack_b;
-	t_stack *temp;
 	
-	temp = NULL;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc > 2)
 		stack_a = fill_stack_a(argc - 1, argv + 1);
 	if (argc == 2)
 		stack_a = fill_stack_a_wsplit(argv[1]);
+	if (!stack_a)
+		return (write(2, "Error\n", 6), 0);
 	if (!check_double(stack_a))
-		return (write(2, "Error Double\n", 13), 0);
-	
-	/* temp = stack_a;
-	while(stack_a != NULL)
-	{
-		printf("nb : %d\n", stack_a->nb);
-		printf("push_cost : %d\n", stack_a->push_cost);
-		printf("cheapest : %d\n", stack_a->cheapest);
-		printf("above_median : %d\n", stack_a->above_median);
-		printf("index : %d\n", stack_a->index);
-		printf("\n");
-		stack_a = stack_a->nx;
-	}
-	stack_a = temp; */
+		return (free_stack(stack_a), write(2, "Error\n", 6), 0);
+	if (is_sorted(stack_a))
+		return (free_stack(stack_a), 0);
 	if (ft_lstsize(stack_a) == 2 || ft_lstsize(stack_a) == 3)
 		three_in_stack(&stack_a);
 	else if (ft_lstsize(stack_a) == 4 || ft_lstsize(stack_a) == 5)
@@ -151,29 +121,5 @@ int	main(int argc, char *argv[])
 	else if (ft_lstsize(stack_a) > 5)
 		sort_list(&stack_a, &stack_b);
 	free_stack(stack_a);
-	/* while(stack_a != NULL)
-	{
-		printf("nb : %d\n", stack_a->nb);
-		printf("push_cost : %d\n", stack_a->push_cost);
-		printf("cheapest : %d\n", stack_a->cheapest);
-		printf("above_median : %d\n", stack_a->above_median);
-		printf("index : %d\n", stack_a->index);
-		printf("target_node_nb : %d\n", stack_a->target_node->nb);
-		printf("target_node_index : %d\n", stack_a->target_node->index);
-		printf("\n");
-		stack_a = stack_a->nx;
-	}
-	while(stack_b != NULL)
-	{
-		printf("nb_b : %d\n", stack_b->nb);
-		printf("push_cost_b : %d\n", stack_b->push_cost);
-		printf("cheapest_b : %d\n", stack_b->cheapest);
-		printf("above_median_b : %d\n", stack_b->above_median);
-		printf("index_b : %d\n", stack_b->index);
-		printf("target_node_nb_b : %d\n", stack_b->target_node->nb);
-		printf("target_node_index_b : %d\n", stack_b->target_node->index);
-		printf("\n");
-		stack_b = stack_b->nx;
-	} */
 	return (0);
 }

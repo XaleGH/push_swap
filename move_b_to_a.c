@@ -6,12 +6,13 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:11:09 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/19 16:42:55 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:11:40 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//set the indexes and assign a target in stack a for each nodes in b
 void	set_b_to_a(t_stack *stack_a, t_stack *stack_b)
 {
 	set_index(stack_a);
@@ -20,6 +21,7 @@ void	set_b_to_a(t_stack *stack_a, t_stack *stack_b)
 	
 }
 
+//assign a target in stack a for each nodes in b
 void	set_target_b_to_a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack	*closest_nb;
@@ -47,12 +49,14 @@ void	set_target_b_to_a(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
+//place the node and push it in a
 void	push_b_to_a(t_stack **stack_a, t_stack **stack_b)
 {
 	pre_push(stack_a, (*stack_b)->target_node, 'a');
 	push(stack_b, stack_a, 'a');
 }
 
+//places the node with the lowest value at the top of the stack
 void	put_min_on_top(t_stack **stack_a)
 {
 	t_stack	*min;

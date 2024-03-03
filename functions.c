@@ -6,23 +6,24 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:15:33 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/20 16:07:12 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/28 12:59:44 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//convert one char* on a int
 int	ft_atoi(char *nptr, t_stack **stack)
 {
 	int			i;
 	int			sign;
 	long int	res;
 
-	i = -1;
+	i = 0;
 	sign = 1;
 	res = 3000000000;
-	while (nptr[i++] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
-		;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i++] == '-')
@@ -32,13 +33,38 @@ int	ft_atoi(char *nptr, t_stack **stack)
 		res = 0;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 		res = res * 10 + nptr[i++] - '0';
-	if (nptr[i] != '\0')
-			return (free_stack(*stack), write(2, "Error Digit\n", 12), exit(1), 0);
-	if ((res * sign) < -2147483648 || (res * sign) > 2147483647)
-		return (free_stack(*stack), write(2, "Error Value\n", 12), exit(1), 0);
+	if ((res * sign) < -2147483648 || (res * sign) > 2147483647 || nptr[i] != '\0')
+		return (free_stack(*stack), write(2, "Error\n", 6), exit(1), 0);
 	return (res * sign);
 }
 
+//convert one char* on a int after use ft_split
+int	ft_atoi_wsplit(char *nptr, t_stack **stack, char **array)
+{
+	int			i;
+	int			sign;
+	long int	res;
+
+	i = 0;
+	sign = 1;
+	res = 3000000000;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i++] == '-')
+			sign = sign * -1;
+	}
+	if (nptr[i] >= '0' && nptr[i] <= '9')
+		res = 0;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+		res = res * 10 + nptr[i++] - '0';	
+	if ((res * sign) < -2147483648 || (res * sign) > 2147483647 || nptr[i] != '\0')
+		return (free_stack(*stack), free_array(array), write(2, "Error\n", 6), exit(1), 0);
+	return (res * sign);
+}
+
+//find the small number in the list stack
 int	find_small_number(t_stack *stack)
 {
 	int small_number;
@@ -54,6 +80,7 @@ int	find_small_number(t_stack *stack)
 	return (small_number);
 }
 
+//find the second small number in the list stack
 int	find_second_small_number(t_stack *stack)
 {
 	int small_number;
@@ -71,4 +98,16 @@ int	find_second_small_number(t_stack *stack)
 		stack = stack->nx;
 	}
 	return (small_second);
+}
+
+//check if value on stack is sorted
+int	is_sorted(t_stack *stack)
+{
+	while (stack->nx)
+	{
+		if (stack->nb > stack->nx->nb)
+			return (0);
+		stack = stack->nx;
+	}
+	return (1);
 }

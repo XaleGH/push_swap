@@ -6,12 +6,13 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:56:49 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/19 16:55:43 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/03 14:06:06 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//function that pushes the node with the lowest push_cost from stack a to b
 void	move_a_to_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *cheapest;
@@ -26,6 +27,7 @@ void	move_a_to_b(t_stack **stack_a, t_stack **stack_b)
 	push(stack_a, stack_b, 'b');
 }
 
+//place the node in the right place before the push
 void	pre_push(t_stack **stack, t_stack *cheapest, char c)
 {
 	while (*stack != cheapest)
@@ -36,6 +38,8 @@ void	pre_push(t_stack **stack, t_stack *cheapest, char c)
 			reverse_rotate(stack, c);
 	}
 }
+
+//rotate the 2 stacks until one of the two nodes is at index 0
 void	rr_both(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest)
 {
 	while (*stack_a != cheapest && *stack_b != cheapest->target_node)
@@ -43,6 +47,8 @@ void	rr_both(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest)
 	set_index(*stack_a);
 	set_index(*stack_b);
 }
+
+//reverse rotate the 2 stacks until one of the two nodes is at index 0
 void	rrr_both(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest)
 {
 	while (*stack_a != cheapest && *stack_b != cheapest->target_node)
@@ -51,6 +57,7 @@ void	rrr_both(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest)
 	set_index(*stack_b);
 }
 
+//returns the node with the cheapest at 1
 t_stack	*get_cheapest(t_stack *stack)
 {
 	if (!stack)
@@ -64,33 +71,3 @@ t_stack	*get_cheapest(t_stack *stack)
 	return (NULL);
 }
 
-void	sort_list(t_stack **stack_a, t_stack **stack_b)
-{
-	int len_a;
-
-	len_a = ft_lstsize(*stack_a);
-	if (len_a-- > 3)
-		push(stack_a, stack_b, 'b');
-	if (len_a-- > 3)
-		push(stack_a, stack_b, 'b');
-	while (len_a-- > 3)
-	{
-		init(stack_a, stack_b);
-		move_a_to_b(stack_a, stack_b);
-	}
-	three_in_stack(stack_a);
-	while (*stack_b)
-	{
-		set_b_to_a(*stack_a, *stack_b);
-		push_b_to_a(stack_a, stack_b);
- 		/*printf("nb_b : %d\n", (*stack_b)->nb);
-		printf("push_cost_b : %d\n", (*stack_b)->push_cost);
-		printf("cheapest_b : %d\n", (*stack_b)->cheapest);
-		printf("above_median_b : %d\n", (*stack_b)->above_median);
-		printf("index_b : %d\n", (*stack_b)->index);
-		printf("target_node_nb_b : %d\n", (*stack_b)->target_node->nb);
-		printf("target_node_index_b : %d\n", (*stack_b)->target_node->index);
-		printf("\n"); */
-	}
-	put_min_on_top(stack_a);
-}

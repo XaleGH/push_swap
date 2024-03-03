@@ -6,12 +6,13 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:09:07 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/20 16:19:34 by asaux            ###   ########.fr       */
+/*   Updated: 2024/02/28 12:53:34 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//free the stack
 void	free_stack(t_stack *stack_a)
 {
 	t_stack *temp;
@@ -25,12 +26,13 @@ void	free_stack(t_stack *stack_a)
 	} 
 }
 
+//free the array
 void	free_array(char **array)
 {
 	int i;
 
 	i = 0;
-	while (array)
+	while (array[i])
 		free(array[i++]);
 	free(array);
 }
