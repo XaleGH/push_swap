@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:11:49 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 14:48:59 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/12 17:28:20 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 		l = l->nx;
 	l->nx = new;
 }
+
 //return the last node of the list
 t_stack	*ft_lstlast(t_stack *lst)
 {

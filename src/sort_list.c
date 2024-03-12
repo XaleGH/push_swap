@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:41:16 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 14:49:45 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/12 17:31:31 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //sorts stack_a in ascending order
 void	sort_list(t_stack **stack_a, t_stack **stack_b)
 {
-	int len_a;
+	int	len_a;
 
 	len_a = ft_lstsize(*stack_a);
 	if (len_a-- > 3 && !is_sorted(*stack_a))
@@ -39,7 +39,7 @@ void	sort_list(t_stack **stack_a, t_stack **stack_b)
 //returns the node with the smallest value
 t_stack	*min_value(t_stack *stack_b)
 {
-	t_stack *min_val;
+	t_stack	*min_val;
 
 	min_val = stack_b;
 	while (stack_b->nx)

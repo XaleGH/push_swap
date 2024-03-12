@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:41:35 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 14:49:25 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/12 17:41:50 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	rrr(t_stack **stack_a, t_stack **stack_b, char c)
 //Check double value in stack_a.
 int	check_double(t_stack *stack_a)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = stack_a->nx;
 	while (stack_a->nx != NULL)

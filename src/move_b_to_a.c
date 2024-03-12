@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:11:09 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 14:49:37 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/12 17:41:58 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	set_b_to_a(t_stack *stack_a, t_stack *stack_b)
 	set_index(stack_a);
 	set_index(stack_b);
 	set_target_b_to_a(stack_a, stack_b);
-	
 }
 
 //assign a target in stack a for each nodes in b

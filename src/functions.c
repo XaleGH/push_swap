@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:15:33 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 14:49:18 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/12 17:34:07 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	ft_atoi(char *nptr, t_stack **stack)
 		res = 0;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 		res = res * 10 + nptr[i++] - '0';
-	if ((res * sign) < -2147483648 || (res * sign) > 2147483647 || nptr[i] != '\0')
+	if ((res * sign) < -2147483648 || (res * sign) > 2147483647
+		|| nptr[i] != '\0')
 		return (free_stack(*stack), write(2, "Error\n", 6), exit(1), 0);
 	return (res * sign);
 }
@@ -58,16 +59,18 @@ int	ft_atoi_wsplit(char *nptr, t_stack **stack, char **array)
 	if (nptr[i] >= '0' && nptr[i] <= '9')
 		res = 0;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
-		res = res * 10 + nptr[i++] - '0';	
-	if ((res * sign) < -2147483648 || (res * sign) > 2147483647 || nptr[i] != '\0')
-		return (free_stack(*stack), free_array(array), write(2, "Error\n", 6), exit(1), 0);
+		res = res * 10 + nptr[i++] - '0';
+	if ((res * sign) < -2147483648 || (res * sign) > 2147483647
+		|| nptr[i] != '\0')
+		return (free_stack(*stack), free_array(array)
+			, write(2, "Error\n", 6), exit(1), 0);
 	return (res * sign);
 }
 
 //find the small number in the list stack
 int	find_small_number(t_stack *stack)
 {
-	int small_number;
+	int	small_number;
 
 	small_number = stack->nb;
 	stack = stack->nx;
@@ -83,8 +86,8 @@ int	find_small_number(t_stack *stack)
 //find the second small number in the list stack
 int	find_second_small_number(t_stack *stack)
 {
-	int small_number;
-	int small_second;
+	int	small_number;
+	int	small_second;
 
 	small_number = find_small_number(stack);
 	if (small_number != stack->nb)

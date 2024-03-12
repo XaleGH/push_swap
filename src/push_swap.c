@@ -6,17 +6,17 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:16:11 by asaux             #+#    #+#             */
-/*   Updated: 2024/03/03 14:49:41 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/12 17:38:06 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
 //Fill stack a when argc > 2.
-t_stack *fill_stack_a(int argc, char *argv[])
+t_stack	*fill_stack_a(int argc, char *argv[])
 {
-	int i;
-	t_stack *stack;
+	int		i;
+	t_stack	*stack;
 
 	i = 0;
 	stack = NULL;
@@ -27,11 +27,12 @@ t_stack *fill_stack_a(int argc, char *argv[])
 	}
 	return (stack);
 }
+
 //Fill stack a when argc == 2.
-t_stack *fill_stack_a_wsplit(char *str)
+t_stack	*fill_stack_a_wsplit(char *str)
 {
-	char 	**array;
-	int 	i;
+	char	**array;
+	int		i;
 	t_stack	*stack;
 
 	i = 0;
@@ -39,7 +40,8 @@ t_stack *fill_stack_a_wsplit(char *str)
 	array = ft_split(str, ' ');
 	while (array[i])
 	{
-		ft_lstadd_back(&stack, ft_lstnew(ft_atoi_wsplit(array[i], &stack, array)));
+		ft_lstadd_back(&stack,
+			ft_lstnew(ft_atoi_wsplit(array[i], &stack, array)));
 		i++;
 	}
 	free_array(array);
@@ -49,7 +51,7 @@ t_stack *fill_stack_a_wsplit(char *str)
 //Sort stack_a when only 2 or 3 values.
 void	three_in_stack(t_stack **stack)
 {
-	int flag;
+	int	flag;
 
 	flag = 1;
 	while (flag == 1)
@@ -60,21 +62,26 @@ void	three_in_stack(t_stack **stack)
 				swap(*stack, 'a');
 			flag = 0;
 		}
-		else if ((*stack)->nb < (*stack)->nx->nb && (*stack)->nx->nb < (*stack)->nx->nx->nb)
+		else if ((*stack)->nb < (*stack)->nx->nb
+			&& (*stack)->nx->nb < (*stack)->nx->nx->nb)
 			flag = 0;
-		else if ((*stack)->nb < (*stack)->nx->nb && (*stack)->nx->nb > (*stack)->nx->nx->nb)
+		else if ((*stack)->nb < (*stack)->nx->nb
+			&& (*stack)->nx->nb > (*stack)->nx->nx->nb)
 			reverse_rotate(stack, 'a');
-		else if ((*stack)->nb > (*stack)->nx->nb && (*stack)->nb > (*stack)->nx->nx->nb)
+		else if ((*stack)->nb > (*stack)->nx->nb
+			&& (*stack)->nb > (*stack)->nx->nx->nb)
 			rotate(stack, 'a');
-		else if ((*stack)->nb > (*stack)->nx->nb && (*stack)->nb < (*stack)->nx->nx->nb)
+		else if ((*stack)->nb > (*stack)->nx->nb
+			&& (*stack)->nb < (*stack)->nx->nx->nb)
 			swap(*stack, 'a');
 	}
 }
+
 //Sort stack_a when only 4 or 5 values.
 void	five_in_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	int small_number;
-	int small_second;
+	int	small_number;
+	int	small_second;
 
 	small_number = find_small_number(*stack_a);
 	if (ft_lstsize(*stack_a) == 5)
@@ -99,9 +106,9 @@ void	five_in_stack(t_stack **stack_a, t_stack **stack_b)
 
 int	main(int argc, char *argv[])
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
-	
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc > 2)

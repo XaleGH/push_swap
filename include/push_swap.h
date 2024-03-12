@@ -6,7 +6,7 @@
 /*   By: asaux <asaux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:52:54 by asaux             #+#    #+#             */
-/*   Updated: 2024/02/28 12:49:55 by asaux            ###   ########.fr       */
+/*   Updated: 2024/03/12 17:42:45 by asaux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ typedef struct s_stack
 	int				index;
 	int				push_cost;
 	int				cheapest;
-	int 			above_median;
+	int				above_median;
 	int				nb;
 	struct s_stack	*target_node;
 	struct s_stack	*nx;
 }	t_stack;
 
 //push_swap.c
-t_stack 	*fill_stack_a(int argc, char *argv[]);
-t_stack 	*fill_stack_a_wsplit(char *str);
+t_stack		*fill_stack_a(int argc, char *argv[]);
+t_stack		*fill_stack_a_wsplit(char *str);
 void		three_in_stack(t_stack **stack);
 void		five_in_stack(t_stack **stack_a, t_stack **stack_b);
 int			main(int argc, char *argv[]);
@@ -74,7 +74,7 @@ t_stack		*max_value(t_stack *stack_b);
 
 //init.c
 int			init(t_stack **stack_a, t_stack **stack_b);
-void 		set_index(t_stack *stack);
+void		set_index(t_stack *stack);
 void		cheapest(t_stack *stack_a);
 void		push_cost(t_stack *a, t_stack *b, t_stack *temp);
 void		set_target_a_to_b(t_stack *stack_a, t_stack *stack_b);
